@@ -24,7 +24,7 @@ To fine-tune the EquiformerV2 model, follow these steps in order:
      - `002`
      - `003`
 
-   These scripts are designed to sequentially perform the fine-tuning process. Please refer to the comments within each script for specific details and configurations.
+   These scripts are designed to sequentially perform the fine-tuning process.
 
 ### 02-MK: Steady-State Approximation with SciPy
 
@@ -38,7 +38,7 @@ The `02-MK` folder contains Python scripts that utilize the `scipy` library to s
 
 **Data Files:**
 
-- `All-k.csv`: This CSV file contains the rate constant (k) for all reactions considered in the kinetic model. Each row likely represents a specific reaction, and columns may include different rate constants under varying conditions or for different alloys.
+- `All-k.csv`: This CSV file contains the rate constant (k) for all reactions considered in the kinetic model. Each row likely represents a specific reaction.
 - `All-Ra`: This file contains the reaction rates (Ra) for all Carbon 1 (C1) products. It provides insights into the formation rates of different C1 products across the studied materials.
 
 **Further Exploration:**
@@ -47,4 +47,3 @@ The scripts in `02-MK` provide a framework for analyzing reaction kinetics using
 
 ---
 
-**For more information or questions, please refer to [Your Contact Information or Project Website - Replace this with your actual contact or website].**
