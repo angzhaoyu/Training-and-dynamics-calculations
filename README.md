@@ -2,33 +2,49 @@
 Fine-tuning the EquiformerV2 model to accelerate DFT calculations for CO reduction to C1 products on Cu3M1 alloys, and solving the corresponding steady-state approximation method.
 # Computational Framework for CO Reduction on Cu3M1 Alloys
 
-## Directory Structure
+### 01-train: Fine-tuning EquiformerV2 Model
 
-### 01-train/ - Fine-tuning EquiformerV2 for Catalyst Modeling
-Contains implementation for fine-tuning the EquiformerV2 architecture from the [Open-Catalyst Project](https://github.com/FAIR-Chem/fairchem).
+This folder focuses on fine-tuning the EquiformerV2 model from the Open Catalyst Project (OCP).
 
-#### Key Components:
-- **01-data/**  
-  DFT-calculated trajectory files for surface adsorption configurations
-  - Contains `*.traj` files from VASP simulations
-  - Coverage ranges: 0.25-1.0 ML for CO and intermediates
+**Overview:**
 
-- **Training Steps** (Execute in sequence):
-  1. `001_data_preprocessing.py`  
-     - Converts traj files to PyG-compatible graphs
-     - Applies rotational/translational invariance
-  2. `002_model_finetuning.py`  
-     - Loads pre-trained `eq2_31M_ec4_allmd.pt` weights
-     - Implements cosine annealing (lr: 1e-4 → 1e-6) 
-     - Batch size: 32 (4×A100 GPUs)
-  3. `003_validation.py`  
-     - Cross-validation with MAE/RSME metrics
-     - Generates parity plots for adsorption energies
+- **Model:** EquiformerV2, a state-of-the-art deep learning model for atomistic simulations.
+- **Source:** Based on the Open Catalyst Project. For the latest version of OCP, please visit the [FAIR-Chem GitHub repository](https://github.com/FAIR-Chem/fairchem). We encourage you to explore this repository for more details about the EquiformerV2 model and the Open Catalyst Project.
+- **Data:** The training data is located in `01-train/01-data`. These data are molecular trajectory (traj) files calculated using Density Functional Theory (DFT).
 
-#### Prerequisites:
-```bash
-# Clone fairchem repository
-git clone https://github.com/FAIR-Chem/fairchem.git
+**Fine-tuning Steps:**
 
-# Download pre-trained model (requires FAIR-Chem access)
-wget https://dl.fbaipublicfiles.com/fairchem/models/eq2_31M_ec4_allmd.pt
+To fine-tune the EquiformerV2 model, follow these steps in order:
+
+1. **Prerequisites:**
+   - Download the pre-trained EquiformerV2 checkpoint `eq2_31M_ec4_allmd.pt` and necessary libraries from the [FAIR-Chem GitHub repository](https://github.com/FAIR-Chem/fairchem). Ensure these are correctly installed and accessible in your environment.
+2. **Run Training Scripts:**
+   - Execute the training scripts in the following order:
+     - `001`
+     - `002`
+     - `003`
+
+   These scripts are designed to sequentially perform the fine-tuning process. Please refer to the comments within each script for specific details and configurations.
+
+### 02-MK: Steady-State Approximation with SciPy
+
+The `02-MK` folder contains Python scripts that utilize the `scipy` library to solve for steady-state approximations in chemical kinetics.
+
+**Overview:**
+
+- **Method:** Steady-State Approximation. This method simplifies complex kinetic models by assuming that the concentrations of intermediate species remain constant over time.
+- **Library:**  [SciPy](https://scipy.org/), a Python library for scientific computing, is used for numerical solutions.
+- **Application:** We have applied this approach to analyze reaction rates on 16 different Copper (Cu) alloys and pure copper.
+
+**Data Files:**
+
+- `All-k.csv`: This CSV file contains the rate constant (k) for all reactions considered in the kinetic model. Each row likely represents a specific reaction, and columns may include different rate constants under varying conditions or for different alloys.
+- `All-Ra`: This file contains the reaction rates (Ra) for all Carbon 1 (C1) products. It provides insights into the formation rates of different C1 products across the studied materials.
+
+**Further Exploration:**
+
+The scripts in `02-MK` provide a framework for analyzing reaction kinetics using steady-state approximation. You can modify and extend these scripts to investigate different reaction mechanisms, materials, and conditions.
+
+---
+
+**For more information or questions, please refer to [Your Contact Information or Project Website - Replace this with your actual contact or website].**
