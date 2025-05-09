@@ -1,4 +1,6 @@
 # Training-and-dynamics-calculations
+his version has been deprecated. For the latest version, please see AdsorbML-FT!!!!!!!!!!
+
 Fine-tuning the EquiformerV2 model to accelerate DFT calculations for CO reduction to C1 products on Cu3M1 alloys, and solving the corresponding steady-state approximation method.
 # Computational Framework for CO Reduction on Cu3M1 Alloys
 
